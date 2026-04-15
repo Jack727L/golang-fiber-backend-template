@@ -1,4 +1,4 @@
--- Revert go-fiber-template:create_user_tokens from pg
+-- Revert YOUR_SQITCH_PROJECT:create_user_tokens from pg
 
 BEGIN;
 

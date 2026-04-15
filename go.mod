@@ -1,9 +1,9 @@
-module github.com/yourusername/go-fiber-template
+module github.com/yourusername/go-api-starter
 
 go 1.26.2
 
 // Local sub-modules
-replace github.com/yourusername/go-fiber-template/env => ./env
+replace github.com/yourusername/go-api-starter/env => ./env
 
 require (
 	github.com/go-playground/validator/v10 v10.18.0
@@ -15,7 +15,7 @@ require (
 	github.com/swaggo/swag v1.16.6
 	github.com/testcontainers/testcontainers-go v0.34.0
 	github.com/testcontainers/testcontainers-go/modules/postgres v0.34.0
-	github.com/yourusername/go-fiber-template/env v0.0.0-00010101000000-000000000000
+	github.com/yourusername/go-api-starter/env v0.0.0-00010101000000-000000000000
 	golang.org/x/crypto v0.38.0
 )
 

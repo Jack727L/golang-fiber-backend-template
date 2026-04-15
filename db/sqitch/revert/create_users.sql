@@ -1,4 +1,4 @@
--- Revert go-fiber-template:create_users from pg
+-- Revert YOUR_SQITCH_PROJECT:create_users from pg
 
 BEGIN;
 

@@ -61,7 +61,7 @@ info:
   contact: {}
   description: A plug-and-play Go REST API using Fiber, PostgreSQL (SQLC), Redis async
     jobs, and testcontainers.
-  title: Go Fiber Template API
+  title: Go API Starter
   version: "1.0"
 paths:
   /auth/login:

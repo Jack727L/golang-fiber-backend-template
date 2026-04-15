@@ -1,8 +1,11 @@
+# Local binary name (replace YOUR_BINARY_NAME when you fork).
+BINARY_NAME ?= YOUR_BINARY_NAME
+
 build:
-	go build -o /tmp/go-fiber-template main.go
+	go build -o /tmp/$(BINARY_NAME) main.go
 
 run: build
-	/tmp/go-fiber-template
+	/tmp/$(BINARY_NAME)
 
 watch:
 	reflex -s -r '\.go$$' make run

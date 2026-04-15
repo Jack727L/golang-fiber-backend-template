@@ -1,8 +1,8 @@
 package main
 
-import "github.com/yourusername/go-fiber-template/setup"
+import "github.com/yourusername/go-api-starter/setup"
 
-// @title           Go Fiber Template API
+// @title           Go API Starter
 // @version         1.0
 // @description     A plug-and-play Go REST API using Fiber, PostgreSQL (SQLC), Redis async jobs, and testcontainers.
 

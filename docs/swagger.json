@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "A plug-and-play Go REST API using Fiber, PostgreSQL (SQLC), Redis async jobs, and testcontainers.",
-        "title": "Go Fiber Template API",
+        "title": "Go API Starter",
         "contact": {},
         "version": "1.0"
     },

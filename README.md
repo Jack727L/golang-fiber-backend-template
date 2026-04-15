@@ -1,6 +1,6 @@
 <div align="center">
 
-# Go Fiber backend template
+# YOUR_REPO_NAME
 
 **REST API starter** — [Fiber](https://gofiber.io/), PostgreSQL + [sqlc](https://sqlc.dev/), [Sqitch](https://sqitch.org/), Redis jobs, Swagger, [testcontainers](https://testcontainers.com/).
 
@@ -89,7 +89,7 @@ Listens on **`:3000`**. Set `BACKEND_ENV` in `.env` (for example `local-dev`).
 
 | Target | What it does |
 | :--- | :--- |
-| `make build` | Binary → `/tmp/go-fiber-template` |
+| `make build` | Binary → `/tmp/$(BINARY_NAME)` (default **`YOUR_BINARY_NAME`** in `Makefile`) |
 | `make run` | Build + run |
 | `make watch` | Rebuild on `.go` changes · needs [`reflex`](https://github.com/cespare/reflex) |
 | `make test` | `./tools/runTests.sh` (Docker required) |
@@ -201,7 +201,7 @@ Requires a running **Docker** daemon; **`--async`** needs **Sqitch** as well.
 Multi-stage build, distroless runtime:
 
 ```bash
-docker build -t go-fiber-template .
+docker build -t YOUR_IMAGE_NAME .
 ```
 
 Uncomment the sample `app` service in `docker-compose.yml` to run the API in Compose.
@@ -274,11 +274,21 @@ The app exposes **`GET /healthz`** and **`GET /readyz`** (readiness includes a D
 
 ## Customizing
 
-Replace the placeholder module `github.com/yourusername/go-fiber-template` in `go.mod`, imports, and Swagger metadata, then:
+**Go module (required for a fork)** — replace **`github.com/yourusername/go-api-starter`** in `go.mod`, `env/go.mod`, every Go import, and the **`%uri`** line in `db/sqitch/sqitch.plan`. Regenerate Swagger if you change doc comments in `main.go` (`make docs`). Then:
 
 ```bash
 go mod tidy
 ```
+
+**Other placeholders (optional, for naming)** — search and replace to taste:
+
+| Placeholder | Where |
+| :--- | :--- |
+| `YOUR_BINARY_NAME` | `Makefile` (`BINARY_NAME`) · default output `/tmp/YOUR_BINARY_NAME` |
+| `YOUR_IMAGE_NAME` | README Docker example · `docker build -t …` |
+| `YOUR_REPO_NAME` | README title |
+| `YOUR_SQITCH_PROJECT` | `db/sqitch/sqitch.plan` (`%project`) · first line of each file under `db/sqitch/deploy/`, `revert/`, `verify/` (must stay consistent) |
+| `YOUR_NAME` / `your.email@example.com` | Author lines in `db/sqitch/sqitch.plan` (new migrations should use your identity) |
 
 ---
 

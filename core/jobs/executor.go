@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/yourusername/go-fiber-template/core"
-	db "github.com/yourusername/go-fiber-template/db/sqlc"
+	"github.com/yourusername/go-api-starter/core"
+	db "github.com/yourusername/go-api-starter/db/sqlc"
 	"github.com/jackc/pgx/v5/pgtype"
 )
 

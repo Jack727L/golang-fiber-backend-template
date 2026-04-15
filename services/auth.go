@@ -5,9 +5,9 @@ import (
 	"encoding/base64"
 	"time"
 
-	"github.com/yourusername/go-fiber-template/core"
-	db "github.com/yourusername/go-fiber-template/db/sqlc"
-	models "github.com/yourusername/go-fiber-template/services/models"
+	"github.com/yourusername/go-api-starter/core"
+	db "github.com/yourusername/go-api-starter/db/sqlc"
+	models "github.com/yourusername/go-api-starter/services/models"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jackc/pgx/v5/pgtype"
 	"golang.org/x/crypto/bcrypt"

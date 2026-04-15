@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/yourusername/go-fiber-template/tests/base"
+	"github.com/yourusername/go-api-starter/tests/base"
 )
 
 // UserTestSuite covers the /auth and /users endpoints.

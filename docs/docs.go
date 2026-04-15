@@ -483,7 +483,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "localhost:3000",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Go Fiber Template API",
+	Title:            "Go API Starter",
 	Description:      "A plug-and-play Go REST API using Fiber, PostgreSQL (SQLC), Redis async jobs, and testcontainers.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

@@ -1,4 +1,4 @@
-module github.com/yourusername/go-fiber-template/env
+module github.com/yourusername/go-api-starter/env
 
 go 1.26.2
 

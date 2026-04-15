@@ -1,4 +1,4 @@
--- Deploy go-fiber-template:create_users to pg
+-- Deploy YOUR_SQITCH_PROJECT:create_users to pg
 
 BEGIN;
 

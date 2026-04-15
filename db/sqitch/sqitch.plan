@@ -1,6 +1,6 @@
 %syntax-version=1.0.0
-%project=go-fiber-template
-%uri=https://github.com/yourusername/go-fiber-template
+%project=YOUR_SQITCH_PROJECT
+%uri=https://github.com/yourusername/go-api-starter
 
-create_users 2024-01-01T00:00:00Z Your Name <you@example.com> # Create users table
-create_user_tokens [create_users] 2024-01-01T00:00:01Z Your Name <you@example.com> # Create user_tokens table
+create_users 2024-01-01T00:00:00Z YOUR_NAME <your.email@example.com> # Create users table
+create_user_tokens [create_users] 2024-01-01T00:00:01Z YOUR_NAME <your.email@example.com> # Create user_tokens table

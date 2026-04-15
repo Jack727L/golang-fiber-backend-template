@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/yourusername/go-fiber-template/env"
+	"github.com/yourusername/go-api-starter/env"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/joho/godotenv"
 )
