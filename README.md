@@ -6,7 +6,7 @@
 
 <br/>
 
-[![Go](https://img.shields.io/badge/Go-1.24+-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev/)
+[![Go](https://img.shields.io/badge/Go-1.26+-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev/)
 [![Fiber](https://img.shields.io/badge/Fiber-v2-6366f1?style=for-the-badge)](https://gofiber.io/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Redis](https://img.shields.io/badge/Redis-7-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
@@ -40,7 +40,7 @@
 
 | Need | Notes |
 | :--- | :--- |
-| **Go** | 1.24+ (`go.mod`) |
+| **Go** | 1.26+ (`go.mod`; latest patch recommended) |
 | **Docker** | Local Postgres/Redis via Compose · testcontainers for tests |
 | **Sqitch** | Run migrations from `db/sqitch` before first boot |
 | **Optional** | `sqlc`, `swag`, `reflex` (`make watch`) |
