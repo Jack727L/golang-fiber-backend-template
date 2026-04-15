@@ -14,7 +14,7 @@
 
 <br/><br/>
 
-[Features](#features) · [Quick start](#quick-start) · [Makefile](#makefile) · [Tools](#tools) · [API](#api-overview) · [Testing](#testing) · [Docker](#docker-image) · [Layout](#project-layout)
+[Features](#features) · [Quick start](#quick-start) · [Makefile](#makefile) · [Tools](#tools) · [API](#api-overview) · [Testing](#testing) · [Docker](#docker-image) · [AWS](#deploying-on-aws) · [Layout](#project-layout)
 
 </div>
 
@@ -205,6 +205,47 @@ docker build -t go-fiber-template .
 ```
 
 Uncomment the sample `app` service in `docker-compose.yml` to run the API in Compose.
+
+---
+
+## Deploying on AWS
+
+This template does **not** ship Terraform, CloudFormation, or CDK. Below is how the app’s **environment variables** map to typical AWS managed services and what to wire in your own IaC or console setup.
+
+### RDS for PostgreSQL
+
+| Setting | AWS notes |
+| :--- | :--- |
+| `POSTGRES_HOST` | RDS **endpoint** (writer hostname), same VPC as the app or reachable privately. |
+| `POSTGRES_PORT` | Usually `5432`. |
+| `POSTGRES_USER` / `POSTGRES_PASSWORD` | Master user or an app user you create in the DB; store secrets in **Secrets Manager** or **SSM Parameter Store**, not in the image. |
+| `POSTGRES_DATABASE` | Your database name on the instance. |
+| `POSTGRES_SSLMODE` | Use `require` or `verify-full` in production (RDS supports TLS). The app defaults to **`require`** when this is unset. |
+
+**Networking:** RDS security group should allow inbound **5432** only from the app’s security group (or a shared private subnet pattern), not from `0.0.0.0/0`.
+
+**Migrations:** Apply Sqitch from a **CI job**, **bastion**, or **one-off task** that can reach RDS (same idea as local `sqitch deploy`, with the RDS URI). The running API container does not apply migrations for you.
+
+### ElastiCache for Redis
+
+| Setting | AWS notes |
+| :--- | :--- |
+| `REDIS_HOST` | Primary **configuration endpoint** (cluster mode) or **primary endpoint** (non-cluster), per your ElastiCache design. |
+| `REDIS_PORT` | Often `6379` (or the port shown in the console). |
+| `REDIS_PASSWORD` | Auth token / password if **AUTH** is enabled. |
+| `REDIS_TLS_ENABLED` | Set to `true` when using **encryption in transit** (common on ElastiCache Serverless and many TLS-enabled clusters). |
+
+**Networking:** Security group for Redis should allow the app SG on the Redis port only.
+
+### Application runtime (typical patterns)
+
+- **Amazon ECS on Fargate** (or EC2): Build and push the image from this repo’s `Dockerfile` to **ECR**; define task env vars from Secrets Manager / SSM; place tasks behind an **Application Load Balancer** whose target group forwards to **container port 3000**. Set `BACKEND_ENV` to `staging` or `prod` as you define in `env/env.go`.
+- **EC2 / Auto Scaling:** Run the binary or Docker with the same env vars; use **Systems Manager** or **user data** only for non-secret bootstrap—inject DB/Redis secrets via the agent or instance role + Secrets Manager.
+- **App Runner / Lambda:** Possible with adaptation (Lambda would need API Gateway and often a different packaging model than this long-lived server).
+
+### Health checks for load balancers
+
+The app exposes **`GET /healthz`** and **`GET /readyz`** (readiness includes a DB ping). Point ALB/ECS health checks at **`/healthz`** for liveness or **`/readyz`** if you want the target removed when Postgres is unreachable.
 
 ---
 
