@@ -40,7 +40,7 @@ if [ "$ASYNC_MODE" = true ]; then
 
     # Wait for postgres
     echo "Waiting for Postgres …"
-    until docker exec or_postgres_db pg_isready -U testuser -d testdb 2>/dev/null; do
+    until docker exec app_test_postgres pg_isready -U testuser -d testdb 2>/dev/null; do
         sleep 1
     done
 

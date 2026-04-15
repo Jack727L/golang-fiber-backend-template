@@ -183,7 +183,9 @@ Regenerate OpenAPI under `docs/` after changing handler annotations.
 
 ## Testing
 
-Use **`tools/runTests.sh`** — see the [Tools](#tools) section for every flag and prerequisite. Short version:
+Use **`tools/runTests.sh`** — see the [Tools](#tools) section for every flag and prerequisite. **Local and CI/CD setup** (GitHub Actions, prerequisites, forks): [`docs/testing.md`](docs/testing.md).
+
+Short version:
 
 ```bash
 ./tools/runTests.sh                # default
